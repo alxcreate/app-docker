@@ -12,15 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Check if it's a tagged commit
-      id: is_tagged
-      run: echo "::set-output name=is_tagged::$(echo $GITHUB_REF | grep -q 'refs/tags/'; echo $?)"
-    - name: Exit if not a tagged commit
-      run: |
-        if [ ${{ steps.is_tagged.outputs.is_tagged }} -ne 0 ]; then
-          echo "This is not a tagged commit. Exiting..."
-          exit 0
-        fi
     - name: Extract tag from commit
       id: extract_tag
       run: echo "::set-output name=tag::$(echo $GITHUB_REF | sed 's/refs\/tags\///')"
