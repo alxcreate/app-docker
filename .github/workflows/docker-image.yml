@@ -27,6 +27,9 @@ jobs:
       run: |
         curl https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
         source "/home/runner/.bashrc"
+    - name: Install Yandex.Cloud CLI 2
+      run: |
+        source "/home/runner/.bashrc"
     - name: Authenticate with Yandex.Cloud
       run: |
         yc config set token ${{ secrets.YC_API_TOKEN }}
