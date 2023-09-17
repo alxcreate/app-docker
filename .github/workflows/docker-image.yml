@@ -25,11 +25,8 @@ jobs:
         tags: alxcreate/app:latest
     - name: Install Yandex.Cloud CLI
       run: |
-        curl https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+        curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
         source "/home/runner/.bashrc"
-    - name: Install Yandex.Cloud CLI 2
-      run: |
-        exec -l $SHELL
     - name: Authenticate with Yandex.Cloud
       run: |
         yc config set token ${{ secrets.YC_API_TOKEN }}
