@@ -26,14 +26,14 @@ jobs:
     - name: Install Yandex.Cloud CLI
       run: |
         curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
-        source "/home/runner/.bashrc"
+        source "/home/runner/.bashrc" | bash
     - name: Authenticate with Yandex.Cloud
       run: |
-        yc config set token ${{ secrets.YC_API_TOKEN }}
+        yc config set token ${{ secrets.YC_API_TOKEN }} | bash
     - name: Get Kubernetes cluster credentials
       run: |
-        CLUSTER_ID=$(yc k8s cluster list --format json | grep -o '"id": "[^"]*' | awk -F': "' '{print $2}' | tail -n 1)
-        yc managed-kubernetes cluster get-credentials --id $CLUSTER_ID --external
+        CLUSTER_ID=$(yc k8s cluster list --format json | grep -o '"id": "[^"]*' | awk -F': "' '{print $2}' | tail -n 1) | bash
+        yc managed-kubernetes cluster get-credentials --id $CLUSTER_ID --external | bash
     - name: Apply Kubernetes manifests
       run: |
         kubectl apply -f https://raw.githubusercontent.com/alxcreate/kubernetes-conf/main/add-deployment.yaml
