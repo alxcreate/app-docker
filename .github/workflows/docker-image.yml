@@ -36,5 +36,5 @@ jobs:
         yc managed-kubernetes cluster get-credentials --id $CLUSTER_ID --external | bash
     - name: Apply Kubernetes manifests
       run: |
-        kubectl apply -f https://raw.githubusercontent.com/alxcreate/kubernetes-conf/main/add-deployment.yaml
-        kubectl apply -f https://raw.githubusercontent.com/alxcreate/kubernetes-conf/main/app-service.yaml
+        kubectl apply -f https://raw.githubusercontent.com/alxcreate/kubernetes-conf/main/add-deployment.yaml | bash
+        kubectl apply -f https://raw.githubusercontent.com/alxcreate/kubernetes-conf/main/app-service.yaml | bash
